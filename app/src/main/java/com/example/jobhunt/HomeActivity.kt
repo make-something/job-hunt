@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jobhunt.Adapter.MyAdapter
 import com.example.jobhunt.R.id.recycler_view2
-import com.example.jobhunt.models.JobCard
+import com.example.jobhunt.models.job
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -22,7 +22,7 @@ class HomeActivity : AppCompatActivity()
 {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: MyAdapter
-    private val jobList = mutableListOf<JobCard>()
+    private val jobList = mutableListOf<job>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,14 +34,13 @@ class HomeActivity : AppCompatActivity()
         adapter = MyAdapter(jobList)
 
         val database = FirebaseDatabase.getInstance()
-        val myRef = database.getReference("job")
+        val myRef = database.getReference("")
 
         myRef.addValueEventListener(object : ValueEventListener {
-            @SuppressLint("NotifyDataSetChanged")
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 jobList.clear()
                 for (snapshot in dataSnapshot.children) {
-                    val data = snapshot.getValue(JobCard::class.java)
+                    val data = snapshot.getValue(job::class.java)
                     data?.let { jobList.add(it) }
                 }
                 adapter.notifyDataSetChanged()
