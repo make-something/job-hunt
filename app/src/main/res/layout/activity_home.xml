@@ -38,23 +38,21 @@
                     android:id="@+id/imageView3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/profile_circle"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/profile_circle" />
 
                 <ImageView
                     android:id="@+id/imageView4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
-                    app:srcCompat="@drawable/baseline_notifications_none_24"
                     app:layout_constraintEnd_toStartOf="@+id/imageView3"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/baseline_notifications_none_24" />
 
                 <TextView
                     android:id="@+id/textView5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/usergreet"
                     android:layout_width="257dp"
                     android:layout_height="105dp"
                     android:fontFamily="@font/poppins"
@@ -62,6 +60,8 @@
                     android:textColor="@color/white"
                     android:textSize="40sp"
                     android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/usergreet"
                     tools:layout_editor_absoluteX="0dp"
                     tools:layout_editor_absoluteY="33dp" />
 
@@ -72,17 +72,17 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="14dp"
             android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp">
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/tv_categories"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Categories"
                 android:layout_weight="1"
+                android:text="Categories"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -91,10 +91,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:clickable="true"
+                android:focusable="true"
                 android:text="See all"
                 android:textColor="@color/darkblue"
-                android:textSize="16sp"
-                android:focusable="true" />
+                android:textSize="16sp" />
 
         </LinearLayout>
 
@@ -102,7 +102,15 @@
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"/>
+            android:layout_marginTop="8dp">
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -145,7 +153,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:itemCount="10"/>
+                tools:itemCount="10"
+                tools:listitem="@layout/item_job_card" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>

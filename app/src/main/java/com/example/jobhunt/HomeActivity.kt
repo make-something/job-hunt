@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import com.example.jobhunt.Adapter.MyAdapter
 import com.example.jobhunt.R.id.recycler_view2
 import com.example.jobhunt.models.job
@@ -51,6 +52,20 @@ class HomeActivity : AppCompatActivity()
                 Log.w("HomeActivity", "loadPost:onCancelled", databaseError.toException())
             }
         })
+        val viewPager: ViewPager2 = findViewById(R.id.viewPager)
+
+        // Data untuk carousel
+        val items = listOf(
+            CarouselItem(R.drawable.ic_architect, "Arsitek"),
+            CarouselItem(R.drawable.ic_barber, "Barber"),
+            CarouselItem(R.drawable.ic_office, "Office"),
+            CarouselItem(R.drawable.ic_pilot, "Pilot"),
+            CarouselItem(R.drawable.ic_barber, "barber"),
+            CarouselItem(R.drawable.ic_office, "Office")
+        )
+
+        val adapter = CarouselAdapter(items)
+        viewPager.adapter = adapter
     }
 }
 

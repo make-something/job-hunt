@@ -20,7 +20,8 @@
             android:layout_width="56dp"
             android:layout_height="56dp"
             android:background="@drawable/background_jobcard"
-            android:elevation="2dp"/>
+            android:elevation="2dp"
+            />
 
         <TextView
             android:id="@+id/tv_jobcat_card"
