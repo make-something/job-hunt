@@ -3,25 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginEnd="12dp">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp"
         tools:ignore="MissingConstraints"
-        >
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp">
 
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:background="@drawable/background_jobcard"
-            android:elevation="2dp"
-            />
+            android:layout_height="56dp" />
 
         <TextView
             android:id="@+id/tv_jobcat_card"

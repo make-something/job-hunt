@@ -1,6 +1,7 @@
 package com.example.jobhunt
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -11,6 +12,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.jobhunt.Adapter.MyAdapter
 import com.example.jobhunt.R.id.recycler_view2
 import com.example.jobhunt.models.job
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -19,6 +21,7 @@ import com.google.firebase.database.ValueEventListener
 import kotlinx.coroutines.Job
 
 
+@Suppress("DEPRECATION")
 class HomeActivity : AppCompatActivity()
 {
     private lateinit var recyclerView: RecyclerView
@@ -38,6 +41,7 @@ class HomeActivity : AppCompatActivity()
         val myRef = database.getReference("")
 
         myRef.addValueEventListener(object : ValueEventListener {
+            @SuppressLint("NotifyDataSetChanged")
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 jobList.clear()
                 for (snapshot in dataSnapshot.children) {
@@ -52,7 +56,7 @@ class HomeActivity : AppCompatActivity()
                 Log.w("HomeActivity", "loadPost:onCancelled", databaseError.toException())
             }
         })
-        val viewPager: ViewPager2 = findViewById(R.id.viewPager)
+
 
         // Data untuk carousel
         val items = listOf(
@@ -65,7 +69,29 @@ class HomeActivity : AppCompatActivity()
         )
 
         val adapter = CarouselAdapter(items)
-        viewPager.adapter = adapter
+
+
+        //bottom navbar//
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigation)
+        bottomNavigationView.selectedItemId = R.id.bottom_home
+        bottomNavigationView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.bottom_home -> true
+                R.id.bottom_search -> {
+                    startActivity(Intent(applicationContext, SearchActivity::class.java))
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+                    finish()
+                    true
+                }
+                R.id.bottom_profile -> {
+                    startActivity(Intent(applicationContext, ProfileActivity::class.java))
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+                    finish()
+                    true
+                }
+                else -> false
+            }
+        }
     }
 }
 

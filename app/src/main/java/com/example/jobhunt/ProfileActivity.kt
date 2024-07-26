@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.OkHttpClient
@@ -15,6 +16,7 @@ import okhttp3.RequestBody
 import java.io.File
 import java.io.IOException
 
+@Suppress("DEPRECATION")
 class ProfileActivity : AppCompatActivity() {
 
 
@@ -40,6 +42,29 @@ class ProfileActivity : AppCompatActivity() {
         btnUploadFile.setOnClickListener {
             selectedFileUri?.let { uri ->
                 uploadFile(uri)
+            }
+        }
+        //bottom navbar//
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigation)
+        bottomNavigationView.selectedItemId = R.id.bottom_profile
+        bottomNavigationView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.bottom_home -> {
+                    startActivity(Intent(applicationContext, HomeActivity::class.java))
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+                    finish()
+                    true}
+                R.id.bottom_search -> {
+                    startActivity(Intent(applicationContext, SearchActivity::class.java))
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+                    finish()
+                    true
+                }
+                R.id.bottom_profile -> {
+
+                    true
+                }
+                else -> false
             }
         }
     }
