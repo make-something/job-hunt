@@ -58,18 +58,6 @@ class HomeActivity : AppCompatActivity()
         })
 
 
-        // Data untuk carousel
-        val items = listOf(
-            CarouselItem(R.drawable.ic_architect, "Arsitek"),
-            CarouselItem(R.drawable.ic_barber, "Barber"),
-            CarouselItem(R.drawable.ic_office, "Office"),
-            CarouselItem(R.drawable.ic_pilot, "Pilot"),
-            CarouselItem(R.drawable.ic_barber, "barber"),
-            CarouselItem(R.drawable.ic_office, "Office")
-        )
-
-        val adapter = CarouselAdapter(items)
-
 
         //bottom navbar//
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigation)
